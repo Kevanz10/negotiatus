@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Negotiatus</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//maps.google.com/maps/api/js?key=AIzaSyAG25Xm2Cl8lAq10P9H_ROAPOBC0DtTTcs"></script>
+    <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+    <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="col-md-2">
+        <%= image_tag ( "negotiatus") %>
+      </div>
+    </nav>
+    <div class="main-section">
+      <div class="container">
+        <h1 class="text-center">Shipment/Package tracking app</h1>
+        <p id="notice"><%= flash[:notice] %></p>
+        <%= yield %>
+      </div>
+    </div>
+    
+  </body>
+</html>

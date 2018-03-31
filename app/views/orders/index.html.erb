@@ -1,0 +1,65 @@
+<div class="order-form">
+  <%= form_for @order, remote:true do |f| %>
+    <div class= "form-group">
+      <%= f.label :order_number %>
+      <%= f.text_field :order_number, class:"form-control", placerholder:"Order number:", required: true%>
+    </div>
+    <div class= "form-group">
+      <%= f.label :vendor_name %>
+      <%= f.collection_select :vendor_id, Vendor.all, :id, :name, {prompt: "Select a vendor"}, {class: "form-control", required: true}%>
+    </div>
+    <div class= "form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class:"form-control", placerholder:"Order number:", required: true%>
+    </div>
+    <div class= "form-group">
+      <%= f.label :tracking_number %>
+      <%= f.text_field :tracking_number, class:"form-control", placerholder:"Order number:", required: true%>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create Order", class:"btn btn-primary create"%>
+    </div>
+  <% end %> 
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="orders-table">
+      <table class="table" style="border:solid,2px">
+        <thead class="thead">
+          <tr>
+            <th > Id</td>
+            <th > Deliver time</th>
+            <th>Order status</th>
+            <th > Vendor </td>
+            <th > Tracking number </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr class="very-late <%=order_status_color(order)%>">
+              <td class="text-center"> <%= order.order_number %></td>
+              <td class="text-center"> <%= order.deliver_time.tr("_", " ") %></td>
+              <td class="text-center "> <%= order.status.tr("_", " ") %></td>
+              <td class="text-center"> <%= order.vendor.name %></td>
+              <td class="text-center"> <%= order.tracking_number %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>  
+  </div>
+  <div class="col-md-6">
+    <div>
+      <div id="map" style='width: 600px; height: 400px;'></div>
+    </div>
+  </div>
+</div>
+<script>
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+</script>

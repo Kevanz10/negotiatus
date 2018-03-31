@@ -1,0 +1,43 @@
+// Place all the styles related to the orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  font-family: 'Lato', sans-serif !important;
+}
+
+.create-vendor{
+  margin-top: 30px;
+}
+
+.main-section{
+  background-color: #F2F2F2;
+  padding-bottom: 20px;
+}
+
+.main-section h1{
+  font-weight: 700;
+  padding-top: 30px;
+  padding-bottom: 5px;
+}
+
+.main-section a, .create{
+  background-color: transparent !important;
+  border-radius: 0.5em;
+  border: 2px solid white !important; 
+  padding: 0.7em 1em;
+  height: unset;
+  margin: 0 1em;
+  color: #4c4c4c !important;
+}
+
+.order-form{
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.red{
+  color: red;
+  font-weight: 900;
+}
