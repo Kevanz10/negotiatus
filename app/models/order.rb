@@ -26,7 +26,6 @@ class Order < ApplicationRecord
 
   def order_deliver_time 
     shipping_distance = calculate_distance_between_order_and_vendor
-    byebug
     if shipping_distance <= MAXIMUM_SHIPPING_DISTANCE["normal"] 
       self.normal!
     elsif shipping_distance <= MAXIMUM_SHIPPING_DISTANCE["not_normal"]
